@@ -1,0 +1,18 @@
+name: Home Banner
+custom_attributes:
+  - name: heading  
+  attribute_type: string
+  - name: body  
+  attribute_type: text
+  - name: buttontext  
+  attribute_type: string 
+  - name: buttonlink  
+  attribute_type: string
+  - name: category  
+  attribute_type: string
+  - name: datetime  
+  attribute_type: datetime
+  - name: weight  
+  attribute_type: integer
+  - name: backgroundimg  
+  attribute_type: photo

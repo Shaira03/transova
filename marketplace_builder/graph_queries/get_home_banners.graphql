@@ -1,0 +1,22 @@
+query get_home_banners {
+  customizations(
+    name: "home_banner",
+    is_deleted: false
+  ){
+    results {
+      id
+      heading: property(name: "heading")
+      body: property(name: "body")
+      buttontext: property(name: "buttontext")
+      buttonlink: property(name: "buttonlink")
+      category: property(name: "category")
+      datetime: property(name: "datetime")
+      weight: property(name: "weight")
+      backgroundimg: custom_image(name: "backgroundimg") {
+      	normal: url(version: "normal")
+      	thumb: url(version: "thumb")
+      	transformed: url(version: "transformed")
+      }
+    }
+  }
+}

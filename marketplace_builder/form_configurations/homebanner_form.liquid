@@ -1,0 +1,83 @@
+---
+name: home_banner
+resource: Customization
+resource_owner: anyone
+redirect_to: admin/home-banner-list
+configuration:
+  properties:
+    heading:
+      validation:
+        presence: true
+    body:
+      validation:
+        presence: true
+    buttontext:
+      validation:
+        presence: true
+    buttonlink:
+      validation:
+        presence: true
+    category:
+      validation:
+        presence: true
+    datetime:
+      validation:
+        presence: true
+    weight:
+      validation:
+        presence: true
+  custom_images:
+    backgroundimg:
+      image:
+        validation: {
+          file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif']}
+        }
+---
+{% form %}
+  {% fields_for 'properties' %}
+    <div>
+    	{% label 'heading' %}
+    	{% input_field 'heading', form: 'properties' %}
+    	{{ form_object.object.errors['properties.heading'] }}
+    </div>
+    <div>
+    	{% label 'body' %}
+    	{% input_field 'body', form: 'properties' %}
+    	{{ form_object.object.errors['properties.body'] }}
+    </div>
+    <div>
+        {% label 'buttontext' %}
+        {% input_field 'buttontext', form: 'properties' %}
+        {{ form_object.object.errors['properties.buttontext'] }}
+    </div>
+    <div>
+    	{% label 'buttonlink' %}
+    	{% input_field 'buttonlink', form: 'properties' %}
+    	{{ form_object.object.errors['properties.buttonlink'] }}
+    </div>
+    <div>
+        {% label 'category' %}
+        {% input_field 'category', form: 'properties' %}
+        {{ form_object.object.errors['properties.category'] }}
+    </div>
+    <div>
+        {% label 'datetime' %}
+        {% input_field 'datetime', form: 'properties' %}
+        {{ form_object.object.errors['properties.datetime'] }}
+    </div>
+    <div> 
+        {% label 'weight' %}
+        {% input_field 'weight', form: 'properties' %}
+        {{ form_object.object.errors['properties.weight'] }}
+    </div>
+  
+  {% endfields_for %}
+  {% fields_for 'custom_images, form: 'properties' %}
+	<div>
+       {% fields_for 'backgroundimg', form: 'custom_images' %}
+      	{% input 'image', as:'image', form: 'backgroundimg' %}
+       {% endfields_for %}    
+    </div>
+  {% endfields_for %}  
+  {% submit 'Submit' %}
+{% endform %}

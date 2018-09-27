@@ -1,0 +1,13 @@
+---
+slug: banner/edit
+---
+
+{% query_graph 'get_one_banner', result_name: 'graph_banner', id: params.slug3 %}
+
+{% if graph_banner %}
+  <h1>Edit </h1>
+  {% render_form 'home_banner', resource_type: "home_banner", resource_id: @graph_banner.customizations.results.first.id %}
+{% else %}
+  <p>Unfortunately we could not find this banner.
+{% endif %}
+

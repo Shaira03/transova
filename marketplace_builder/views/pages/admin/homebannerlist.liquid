@@ -1,0 +1,18 @@
+---
+slug: admin/home-banner-list
+layout_name: ''
+---
+
+{% render_form 'home_banner', parent_resource_id: 'home_banner' %}
+
+{%- query_graph 'get_home_banners', result_name: 'g' -%}
+
+{% assign slides = g.customizations.results %}
+<ul>
+  {% for slide in slides %}
+    <li>{{ slide.heading }}, {{ slide.body }}, {{ slide.buttontext }}, {{ slide.buttonlink }}, {{ slide.category }}, {{ slide.datetime }}, {{ slide.weight }}, 
+    <img src="{{ slide.backgroundimg.normal }}" alt="" width="100"/>
+    <a href="admin/banner/edit/{{slide.id}}">edit</a> <a href="admin/banner/delete/{{slide.id}}">delete</a>
+    </li>
+  {% endfor %}
+</ul>
